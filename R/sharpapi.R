@@ -20,7 +20,7 @@ sharpapi_get <- function(path, ...) {
   jsonlite::fromJSON(httr2::resp_body_string(resp))
 }
 
-#' List sports with live event counts (staleness-guard probe)
+#' List sports with live event counts
 #'
 #' @return A data frame with one row per sport. Columns include `id`,
 #'   `name`, `numerical_id`, `event_count` and `live_count`.
