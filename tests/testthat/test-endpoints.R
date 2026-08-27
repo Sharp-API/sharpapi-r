@@ -21,7 +21,9 @@ test_that("sharpapi_odds() hits /odds and returns the documented columns", {
   expect_true(all(c("event_id", "sportsbook", "market_type", "selection",
                     "odds_american", "odds_decimal", "odds_probability")
                   %in% names(got$value)))
-  expect_identical(got$value$odds_american, -145L)
+  # expect_equal, not expect_identical: jsonlite may parse a whole number as
+  # integer or double depending on the value, and the type is not the contract.
+  expect_equal(got$value$odds_american, -145)
 })
 
 test_that("sharpapi_ev() hits /opportunities/ev", {
